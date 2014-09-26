@@ -16,7 +16,7 @@ app.set('env', process.env.ENV || 'production')
 
 // app init
 if (app.get('env') === 'development') {
-    //init()
+    init()
 }
 
 var staticPath = path.join(__dirname, 'public')
@@ -40,7 +40,9 @@ app.post('/signup', function (req, res) {
 })
 
 app.get('/list', function (req, res) {
-    //db.run()
+    db.all('SELECT id, email FROM emails', function (err, rows) {
+        res.json(rows)
+    })
 })
 
 app.listen(app.get('port'), function () {
