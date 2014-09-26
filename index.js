@@ -6,14 +6,20 @@ var path            = require('path')
   , bodyParser      = require('body-parser')
   ;
 
-var db = require('./db')
+var db      = require('./db')
+  , init    = require('./init')
+  ;
 
+// app config
 app.set('port', process.env.PORT || 3000)
 app.set('env', process.env.ENV || 'production')
 
-module.exports = app
+// app init
+if (app.get('env') === 'development') {
+    //init()
+}
 
-var staticPath = path.join(__dirname, '../public')
+var staticPath = path.join(__dirname, 'public')
 app.use(express.static(staticPath))
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -26,11 +32,19 @@ app.post('/signup', function (req, res) {
 
     db.serialize(function () {
         var stmt = db.prepare('INSERT INTO emails (email) VALUES (?)')
+        stmt.run(req.body.email)
+        stmt.finalize()
     })
 
     res.redirect('/')
 })
 
+app.get('/list', function (req, res) {
+    //db.run()
+})
+
 app.listen(app.get('port'), function () {
     console.log('~~~~~> Listening on %s', app.get('port'))
 })
+
+module.exports = app
