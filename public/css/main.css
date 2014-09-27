@@ -1,0 +1,8 @@
+body {
+  background-image: url('/img/bg/evening.jpg');
+  background-color: #eeeeee;
+}
+section {
+  padding-top: 6em;
+  padding-bottom: 4em;
+}
