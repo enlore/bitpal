@@ -32,8 +32,8 @@ app.post('/signup', function (req, res) {
     }
 
     db.serialize(function () {
-        var stmt = db.prepare('INSERT INTO emails (email) VALUES (?)')
-        stmt.run(req.body.email)
+        var stmt = db.prepare('INSERT INTO emails (email, created) VALUES (?, ?)')
+        stmt.run(req.body.email, Date.now())
         stmt.finalize()
     })
 
