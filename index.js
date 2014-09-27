@@ -11,8 +11,8 @@ var db      = require('./db')
   ;
 
 // app config
-app.set('port', process.env.PORT || process.env.OPENSHIFT_PORT || 3000)
-app.set('host', process.env.IP || process.env.OPENSHIFT_IP || '127.0.0.1')
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000)
+app.set('host', process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1')
 app.set('env', process.env.ENV || 'production')
 
 // app init
@@ -46,7 +46,7 @@ app.get('/list', function (req, res) {
     })
 })
 
-app.listen(app.get('port'), function () {
+app.listen(app.get('port'), app.get('host'), function () {
     console.log('~~~~~> Listening on %s', app.get('port'))
 })
 
