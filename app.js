@@ -48,7 +48,7 @@ app.get('/list', function (req, res) {
 
 app.start = function () {
     app.listen(app.get('port'), app.get('host'), function () {
-        console.log('~~~~~> Listening on %s', app.get('port'))
+        console.log('~~~~~> Listening - %s:%s in %s', app.get('host'), app.get('port'), app.get('env'))
     })
 }
 
