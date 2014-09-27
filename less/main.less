@@ -10,6 +10,11 @@
 @green: #0ea258;
 @btn-action: @green;
 
+@blue-alpha: rgba(64, 167, 242, 0.6);
+@blue-fallback: #40a7f2;
+
+
+
 @import 'components';
 
 body {
@@ -24,4 +29,10 @@ section {
 
 .landing-page {
     color: @landing-page-color;
+    font-size: 1.4em;
+
+    .copy {
+        background-color: @blue-fallback;
+        background-color: @blue-alpha;
+    }
 }
