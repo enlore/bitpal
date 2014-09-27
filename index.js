@@ -13,7 +13,7 @@ var db      = require('./db')
 // app config
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000)
 app.set('host', process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1')
-app.set('env', process.env.ENV || 'production')
+app.set('env', process.env.ENV || process.env.OPENSHIFT_APP_ENV || 'production')
 
 // app init
 if (app.get('env') === 'development') {
